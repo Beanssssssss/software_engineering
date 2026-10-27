@@ -261,7 +261,8 @@
   .deck-app{position:absolute;inset:0;z-index:3;background:#fff;color:var(--t1);overflow:auto}
   .back-deck{font-size:14px;font-weight:700;color:var(--green)}
   .deck-bar{position:absolute;top:0;left:0;height:4px;background:var(--green);transition:width .3s;z-index:5}
-  .slide{flex:1;padding:56px 120px 24px;display:flex;flex-direction:column;justify-content:flex-start;animation:in .35s ease;min-height:0}
+  .slide{flex:1;padding:40px 56px 24px;display:flex;flex-direction:column;justify-content:flex-start;animation:in .35s ease;min-height:0}
+  .slide-in{display:flex;flex-direction:column;transform-origin:0 0;min-height:0}
   @keyframes in{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
   .s-center{text-align:center;margin:auto 0}
   .s-logo{width:160px;height:160px;object-fit:contain;margin-bottom:8px}
@@ -291,10 +292,10 @@
   .s-prob.four p+p{margin-top:8px}
   .s-prob.four li{padding-left:44px}
   .s-prob.four li::before{width:30px;height:30px;font-size:16px;top:0}
-  .s-prob.four .s-evidence{max-height:16vh;margin:12px 0 4px 100px}
+  .s-prob.four .s-evidence{max-height:16vh;max-width:calc(100% - 100px);margin:12px 0 4px 100px}
   .s-prob.four em{width:84px}
   .s-prob em{flex:none;width:96px;font-style:normal;font-weight:700;color:var(--green)}
-  .s-h.tight{margin-bottom:28px}
+  .s-h.tight{margin-bottom:44px}
   .s-table{width:100%;border-collapse:collapse;font-size:16px;line-height:1.5;color:var(--t2)}
   .s-table th{background:var(--green);color:#fff;font-weight:700;text-align:left;padding:10px 14px;border:1px solid var(--green)}
   .s-table td{padding:9px 14px;border:1px solid var(--line2);vertical-align:middle}

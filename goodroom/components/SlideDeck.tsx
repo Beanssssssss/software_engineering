@@ -7,8 +7,20 @@ import RoomApp from "./RoomApp";
 export default function SlideDeck() {
   const [i, setI] = useState(0);
   const [grid, setGrid] = useState(false);
+  const [scale, setScale] = useState(1);
   const last = slides.length - 1;
   const inApp = !!slides[i].app;
+
+  // 큰 화면(전체화면 등)에서는 글자·표·간격을 함께 키워 슬라이드가 아래까지 채워지게 한다
+  useEffect(() => {
+    const fit = () => {
+      const s = innerWidth < 900 ? 1 : Math.min(innerWidth / 1400, innerHeight / 800);
+      setScale(Math.min(2, Math.max(1, s)));
+    };
+    fit();
+    window.addEventListener("resize", fit);
+    return () => window.removeEventListener("resize", fit);
+  }, []);
 
   const go = useCallback((n: number) => setI(Math.max(0, Math.min(last, n))), [last]);
 
@@ -59,7 +71,12 @@ export default function SlideDeck() {
         </div>
       ) : (
         <main className="slide" key={slides[i].id}>
-          {slides[i].body}
+          <div
+            className="slide-in"
+            style={{ width: `${100 / scale}%`, height: `${100 / scale}%`, transform: `scale(${scale})` }}
+          >
+            {slides[i].body}
+          </div>
         </main>
       )}
 
